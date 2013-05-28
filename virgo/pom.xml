@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.sablesoft.nebula</groupId>
+        <artifactId>parent</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+        <relativePath>../parent</relativePath>
+    </parent>
+    <groupId>com.sablesoft.nebula.virgo</groupId>
+    <artifactId>virgo</artifactId>    
+    <packaging>pom</packaging>
+    <name>Eclipse Virgo</name>
+  
+    <properties>
+        <tycho-version>0.17.0</tycho-version>
+    </properties>
+  
+    <modules>
+        <!-- Virgo Test -->
+        <module>virgo.test/org.eclipse.virgo.test.stubs</module>
+        <!-- Virgo Util -->
+        <module>virgo.util/org.eclipse.virgo.util.common</module>
+        <module>virgo.util/org.eclipse.virgo.util.jmx</module>
+        <module>virgo.util/org.eclipse.virgo.util.env</module>
+        <module>virgo.util/org.eclipse.virgo.util.io</module>
+        <module>virgo.util/org.eclipse.virgo.util.math</module>
+        <module>virgo.util/org.eclipse.virgo.util.parser.manifest</module>
+        <module>virgo.util/org.eclipse.virgo.util.osgi.manifest</module>
+        <module>virgo.util/org.eclipse.virgo.util.osgi</module>
+        <!-- Virgo Medic -->
+        <module>virgo.medic/org.eclipse.virgo.medic</module>
+        <module>virgo.medic/org.eclipse.virgo.medic.test</module>        
+        <!-- Virgo Nano -->           
+         <module>virgo.nano/org.eclipse.virgo.nano.core</module>     
+         <module>virgo.nano/org.eclipse.virgo.nano.deployer.api</module>   
+         <module>virgo.nano/org.eclipse.virgo.nano.deployer.hot</module>
+         <module>virgo.nano/org.eclipse.virgo.nano.deployer</module>   
+         <module>virgo.nano/org.eclipse.virgo.nano.management</module>      
+         <module>virgo.nano/org.eclipse.virgo.nano.management.controller</module>   
+         <module>virgo.nano/org.eclipse.virgo.nano.services.concurrent</module>   
+         <module>virgo.nano/org.eclipse.virgo.nano.services.ds</module>   
+         <module>virgo.nano/org.eclipse.virgo.nano.shutdown</module> 
+         <module>virgo.nano/org.eclipse.virgo.nano.authentication</module>  
+    </modules>
+  
+    
+</project>
