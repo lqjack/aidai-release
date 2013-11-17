@@ -35,7 +35,7 @@ public class StubComponentContext implements ComponentContext {
 
     public final String DEFAULT_PROP_VALUE = "value";
 
-    private final Dictionary<String, String> props = new Hashtable<String, String>();
+    private final Dictionary<String, Object> props = new Hashtable<String, Object>();
 
     private final BundleContext bundleContext;
 
@@ -47,7 +47,7 @@ public class StubComponentContext implements ComponentContext {
     /**
      * {@inheritDoc}
      */
-    public Dictionary<String, String> getProperties() {
+    public Dictionary<String, Object> getProperties() {
         return this.props;
     }
 

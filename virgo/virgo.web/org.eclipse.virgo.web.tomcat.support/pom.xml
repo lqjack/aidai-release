@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>ossu.nebula.virgo</groupId>
+        <artifactId>virgo</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+        <relativePath>../..</relativePath>
+    </parent>
+    <artifactId>org.eclipse.virgo.web.tomcat.support</artifactId> 
+    <packaging>bundle</packaging>
+    <name>org.eclipse.virgo.web.tomcat.support</name>
+ 
+    <dependencies>
+        <dependency>
+            <groupId>ossu.nebula.virgo</groupId>
+            <artifactId>org.eclipse.virgo.nano.core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ossu.nebula.virgo</groupId>
+            <artifactId>org.eclipse.virgo.web.core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.gemini.web</groupId>
+            <artifactId>org.eclipse.gemini.web.tomcat</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+        </dependency>
+        
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Fragment-Host>org.eclipse.gemini.web.tomcat</Fragment-Host>
+                        <Private-Package>org.eclipse.virgo.web.tomcat.support</Private-Package>
+                        <Import-Package>
+                            org.eclipse.virgo.kernel.*;version="${project.version}",
+                            org.eclipse.virgo.nano.*;version="${project.version}",
+                            org.eclipse.gemini.web.*;version="[2.2.2,3)",
+                            org.eclipse.virgo.medic.*;version="${project.version}",
+                            org.eclipse.virgo.web.*;version="${project.version}",
+                            org.eclipse.virgo.util.*;version="${project.version}",
+                            org.apache.catalina.*;version="[7.0.35,7.1)",
+                            javax.servlet;version="2.6.0",*
+                        </Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

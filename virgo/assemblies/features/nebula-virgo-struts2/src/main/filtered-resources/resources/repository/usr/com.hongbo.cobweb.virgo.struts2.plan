@@ -1,0 +1,33 @@
+<plan name="ossu.nebula.virgo.struts2" version="2.0.0" scoped="false" atomic="true"
+                xmlns="http://www.springsource.org/schema/dm-server/plan"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="
+                        http://www.springsource.org/schema/dm-server/plan 
+                        http://www.springsource.org/schema/dm-server/plan/springsource-dm-server-plan.xsd">
+    <!-- Struts 2 Core bundle -->
+    <artifact type="bundle" name="org.apache.struts.xwork.core" version="[2.3, 4)"/>
+    <artifact type="bundle" name="org.apache.servicemix.bundles.velocity-tools" version="[2.0, 3)"/>
+    <artifact type="bundle" name="org.apache.servicemix.bundles.junit" version="[4.10, 5)"/>
+    <artifact type="bundle" name="org.apache.commons.lang3" version="[3.0, 4)"/>
+    <artifact type="bundle" name="org.apache.servicemix.bundles.javassist" version="[3.12, 4)"/>
+    <artifact type="bundle" name="org.apache.servicemix.bundles.ognl" version="[3.0, 4)"/>
+    <artifact type="bundle" name="org.apache.servicemix.bundles.asm" version="[3.3, 4)"/>
+    <artifact type="bundle" name="org.testng" version="[6.8, 8)"/>
+    <artifact type="bundle" name="org.apache.commons.io" version="[2.0, 3)"/>
+    <artifact type="bundle" name="org.apache.servicemix.bundles.velocity" version="[1.7, 3)"/>
+    <artifact type="bundle" name="org.apache.commons.collections" version="[3.0, 4)"/>
+    <artifact type="bundle" name="org.apache.commons.lang" version="[2.6, 3)"/>
+    <artifact type="bundle" name="org.apache.servicemix.bundles.freemarker" version="[2.3, 3)"/>
+    <artifact type="bundle" name="org.apache.struts.2-core" version="[2.3, 4)"/>
+
+    <!-- Struts 2 Convention Plugin-->		
+    <artifact type="bundle" name="org.apache.felix.bundlerepository" version="[1.0, 2)"/>
+    <artifact type="bundle" name="org.apache.felix.main" version="[1.0, 2)"/>
+
+    <artifact type="bundle" name="org.apache.struts.2-osgi-plugin" version="[2.3, 3)"/>
+    <artifact type="bundle" name="org.apache.struts.2-convention-plugin" version="[2.3, 3)"/>
+
+    <!-- application.xml-->
+
+
+</plan>

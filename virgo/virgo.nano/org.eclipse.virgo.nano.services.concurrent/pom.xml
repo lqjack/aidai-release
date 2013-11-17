@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.sablesoft.nebula.virgo</groupId>
+        <groupId>ossu.nebula.virgo</groupId>
         <artifactId>virgo</artifactId>
         <version>2.0.0-SNAPSHOT</version>
         <relativePath>../..</relativePath>
@@ -17,26 +17,40 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.sablesoft.nebula.virgo</groupId>
+            <groupId>ossu.nebula.virgo</groupId>
             <artifactId>org.eclipse.virgo.medic</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.sablesoft.nebula.virgo</groupId>
+            <groupId>ossu.nebula.virgo</groupId>
             <artifactId>org.eclipse.virgo.util.math</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
-            <version>4.3.1</version>
+            <artifactId>org.osgi.enterprise</artifactId>
         </dependency>
         
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Service-Component>
+                            OSGI-INF/org.eclipse.virgo.nano.services.concurrent.xml
+                        </Service-Component>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

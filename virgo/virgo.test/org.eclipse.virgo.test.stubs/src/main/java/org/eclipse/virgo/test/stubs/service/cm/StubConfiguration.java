@@ -224,4 +224,9 @@ public final class StubConfiguration implements Configuration {
             properties.put(ConfigurationAdmin.SERVICE_FACTORYPID, this.factoryPid);
         }
     }
+
+    @Override
+    public long getChangeCount() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
 }

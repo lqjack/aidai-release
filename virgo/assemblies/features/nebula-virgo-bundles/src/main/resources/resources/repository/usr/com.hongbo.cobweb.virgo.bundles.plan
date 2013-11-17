@@ -1,0 +1,10 @@
+<plan name="ossu.nebula.virgo.bundles" version="2.0.0" scoped="false" atomic="true"
+                xmlns="http://www.springsource.org/schema/dm-server/plan"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="
+                        http://www.springsource.org/schema/dm-server/plan 
+                        http://www.springsource.org/schema/dm-server/plan/springsource-dm-server-plan.xsd">
+    <!-- Thirdparty Web Runtime bundles -->        
+    <artifact type="bundle" name="org.apache.servicemix.bundles.commons-dbcp" version="[1.4, 2)"/> 
+    <artifact type="bundle" name="com.mysql.jdbc" version="[5.0, 6)"/>
+</plan>

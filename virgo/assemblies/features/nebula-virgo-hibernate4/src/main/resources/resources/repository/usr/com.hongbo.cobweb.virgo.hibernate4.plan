@@ -1,0 +1,22 @@
+<plan name="ossu.nebula.virgo.hibernate4" version="2.0.0" scoped="false" atomic="true"
+                xmlns="http://www.springsource.org/schema/dm-server/plan"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="
+                        http://www.springsource.org/schema/dm-server/plan 
+                        http://www.springsource.org/schema/dm-server/plan/springsource-dm-server-plan.xsd">
+    <!-- Hibernate 4 Required bundles -->
+    <artifact type="bundle" name="org.apache.servicemix.bundles.ant" version="[1.8, 2)"/>
+    <artifact type="bundle" name="org.apache.servicemix.bundles.antlr" version="[2.2, 3)"/>
+    <artifact type="bundle" name="org.apache.servicemix.bundles.dom4j" version="[1.6, 2)"/>
+    <artifact type="bundle" name="com.springsource.javassist" version="[3.15, 4)"/>    
+    <artifact type="bundle" name="classmate" version="[0.7.0, 1)"/>
+    <artifact type="bundle" name="com.springsource.org.jboss.jandex" version="[1.0, 2)"/>    
+    <artifact type="bundle" name="org.jboss.logging.jboss-logging" version="[3.0, 4)"/>
+
+    <artifact type="bundle" name="com.springsource.org.hibernate.annotations.common" version="[4.0, 5)"/> 
+    <artifact type="bundle" name="com.springsource.org.hibernate.core" version="[4.0, 5)"/> 
+    <artifact type="bundle" name="com.springsource.org.hibernate.ejb" version="[4.0, 5)"/> 
+
+    <artifact type="bundle" name="org.hibernate.validator" version="[4.0, 6)"/> 
+    <artifact type="bundle" name="javax.validation.api" version="[1.0, 2)"/> 
+</plan>

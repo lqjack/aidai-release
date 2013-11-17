@@ -70,7 +70,7 @@ public final class HotDeployer {
      */
     private File createHotDeployDir(@NonNull PathReference pickUpDirectoryPath) {
         if (pickUpDirectoryPath.isFile()) {
-            logger.debug("Deleting stray file from hot deployment directory location '{}'.", pickUpDirectoryPath.getAbsolutePath());
+            if(logger.isDebugEnabled())logger.debug("Deleting stray file from hot deployment directory location '{}'.", pickUpDirectoryPath.getAbsolutePath());
             pickUpDirectoryPath.delete();
         }
         if (!pickUpDirectoryPath.exists()) {

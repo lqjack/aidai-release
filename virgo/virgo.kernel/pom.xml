@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>ossu.nebula.virgo</groupId>
+        <artifactId>virgo</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+    </parent>
+    <groupId>ossu.nebula.virgo.kernel</groupId>
+    <artifactId>virgo.kernel</artifactId>
+    <packaging>pom</packaging>
+    <name>Eclipse Virgo :: Kernel</name>
+    
+    <modules>
+        <module>org.eclipse.virgo.kernel.agent.dm</module>
+        <module>org.eclipse.virgo.kernel.equinox.extensions</module>
+        <module>org.eclipse.virgo.kernel.kerneldmfragment</module>
+                
+        <module>org.eclipse.virgo.kernel.artifact</module>
+        <module>org.eclipse.virgo.kernel.osgi</module>                
+        <module>org.eclipse.virgo.kernel.deployer</module>   
+        <module>org.eclipse.virgo.kernel.services</module>     
+        <module>org.eclipse.virgo.kernel.deployer.dm</module>
+        
+        <module>org.eclipse.virgo.kernel.stubs</module>
+                        
+        <module>org.eclipse.virgo.kernel.model</module>                                  
+        <module>org.eclipse.virgo.kernel.userregion</module>        
+        <module>org.eclipse.virgo.kernel.userregionfactory</module>        
+        <module>org.eclipse.virgo.kernel.dmfragment</module>
+        <module>org.eclipse.virgo.shell.command</module>
+        
+        <module>org.eclipse.virgo.management.fragment</module>
+        <module>org.eclipse.virgo.management.console</module>
+    </modules>
+</project>
