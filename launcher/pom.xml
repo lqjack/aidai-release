@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+~ Licensed to the Apache Software Foundation (ASF) under one or more
+~ contributor license agreements.  See the NOTICE file distributed with
+~ this work for additional information regarding copyright ownership.
+~ The ASF licenses this file to You under the Apache License, Version 2.0
+~ (the "License"); you may not use this file except in compliance with
+~ the License.  You may obtain a copy of the License at
+~
+~      http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing, software
+~ distributed under the License is distributed on an "AS IS" BASIS,
+~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+~ See the License for the specific language governing permissions and
+~ limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>ossu.nebula</groupId>
+        <artifactId>parent</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+        <relativePath>../parent</relativePath>
+    </parent>
+    <groupId>ossu.nebula.launcher</groupId>
+    <artifactId>launcher</artifactId>
+    <packaging>pom</packaging>
+    <name>Nebula Launcher</name>
+    <description>Run nebula instance or debug nebula instance</description>
+  
+    <dependencies>
+        <dependency>
+            <groupId>ossu.nebula.features</groupId>
+            <artifactId>framework</artifactId>
+            <type>kar</type>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+            <!-- scope is runtime so the feature repo is listed in the features service config file, 
+            and features may be installed using the karaf-maven-plugin configuration -->
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>standard</artifactId>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <!-- scope is runtime so the feature repo is listed in the features service config file, 
+            and features may be installed using the karaf-maven-plugin configuration -->
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>spring</artifactId>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>        
+            <groupId>ossu.nebula.features</groupId>
+            <artifactId>nebula-virgo</artifactId>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <version>${project.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <dependency>        
+            <groupId>ossu.nebula.virgo.features</groupId>
+            <artifactId>nebula-virgo-nano</artifactId>
+            <type>kar</type>
+            <version>${project.version}</version>
+        </dependency>
+        <!--  Virgo Kernel Only (if you run Virgo Web, this must be comment -->
+        <dependency>        
+            <groupId>ossu.nebula.virgo.features</groupId>
+            <artifactId>nebula-virgo-kernel</artifactId>
+            <type>kar</type>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <!-- Virgo tomcat server and snaps 
+        <dependency>        
+            <groupId>ossu.nebula.virgo.features</groupId>
+            <artifactId>nebula-virgo-web</artifactId>
+            <type>kar</type>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>        
+            <groupId>ossu.nebula.virgo.features</groupId>
+            <artifactId>nebula-virgo-snaps</artifactId>
+            <type>kar</type>
+            <version>${project.version}</version>
+        </dependency>
+        -->        
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.karaf.tooling</groupId>
+                <artifactId>karaf-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>process-resources</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>install-kars</goal>
+                        </goals>
+                    </execution>                    
+                </executions>
+                <configuration>
+                    <installedFeatures>
+                        <feature>wrapper</feature>
+                    </installedFeatures>
+                    <bootFeatures>
+                        <feature>framework</feature>
+                        <feature>standard</feature>
+                        <!--<feature>obr</feature>-->
+                        <feature>virgo.kernel</feature>                    
+                    </bootFeatures>
+                </configuration>
+            </plugin>     
+            
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>java</executable>
+                    <workingDirectory>${project.basedir}/target/assembly</workingDirectory>
+                    <arguments>
+
+                        <argument>-classpath</argument>
+                        <argument>${project.basedir}/target/assembly/conf${path.separator}${project.basedir}/target/assembly/lib/karaf-jaas-boot.jar${path.separator}${project.basedir}/target/assembly/lib/karaf-jmx-boot.jar${path.separator}${project.basedir}/target/assembly/lib/karaf-org.osgi.core.jar${path.separator}${project.basedir}/target/assembly/lib/karaf.jar${path.separator}${project.basedir}/target/assembly/lib/org.eclipse.virgo.nano.shutdown-${project.version}.jar${path.separator}${project.basedir}/target/assembly/lib/org.eclipse.virgo.util.env-${project.version}.jar${path.separator}${project.basedir}/target/assembly/lib/org.eclipse.virgo.nano.authentication-${project.version}.jar</argument>
+                        <argument>-Xmx512m</argument>
+                        <argument>-XX:MaxPermSize=512m</argument>
+                                                
+                        <argument>-Dkaraf.startRemoteShell=true</argument>
+                        <argument>-Djava.net.preferIPv4Stack=true</argument>
+                        <argument>-Dderby.system.home=${project.basedir}/target/assembly/data/derby</argument>
+                        <argument>-Dderby.storage.fileSyncTransactionLog=true</argument>
+                        <argument>-Dcom.sun.management.jmxremote</argument>
+                        <argument>-Dkaraf.startLocalConsole=true</argument>                        
+                        <argument>-Djline.WindowsTerminal.directConsole=false</argument>						
+                        <argument>-Dkaraf.home=${project.basedir}/target/assembly</argument>
+                        <argument>-Dkaraf.base=${project.basedir}/target/assembly</argument>
+                        <argument>-Dkaraf.etc=${project.basedir}/target/assembly/etc</argument>
+                        <argument>-Dkaraf.instances=${project.basedir}/target/assembly/instances</argument>
+                        <argument>-Djava.io.tmpdir=${project.basedir}/target/assembly/data/tmp</argument>
+                        <argument>-Djava.endorsed.dirs=${project.basedir}/target/assembly/lib/endorsed</argument>
+                        <argument>-Dkaraf.data=${project.basedir}/target/assembly/data</argument>
+                        <argument>-Djava.util.logging.config.file=${project.basedir}/target/assembly/etc/java.util.logging.properties</argument>
+                        
+                        <!-- ======Begin :: Virgo Related Arguments -->
+                        <argument>-Dcom.sun.management.jmxremote.port=9785</argument>
+                        <argument>-Dcom.sun.management.jmxremote.authenticate=true</argument> 
+                        <argument>-Dcom.sun.management.jmxremote.login.config=virgo-kernel</argument> 
+                        <argument>-Dcom.sun.management.jmxremote.access.file=${project.basedir}/target/assembly/etc/org.eclipse.virgo.kernel.jmxremote.access.properties</argument> 
+                        <argument>-Djavax.net.ssl.keyStore=${project.basedir}/target/assembly/etc/keystore</argument> 
+                        <argument>-Djavax.net.ssl.keyStorePassword=changeit</argument> 
+                        <argument>-Dcom.sun.management.jmxremote.ssl=true</argument> 
+                        <argument>-Dcom.sun.management.jmxremote.ssl.need.client.auth=false</argument>
+                        <argument>-XX:+HeapDumpOnOutOfMemoryError</argument>
+                        <argument>-XX:ErrorFile=${project.basedir}/target/assembly/data/serviceability/error.log</argument>
+                        <argument>-XX:HeapDumpPath=${project.basedir}/target/assembly/data/serviceability/heap_dump.hprof</argument>
+                        <argument>-Djava.security.auth.login.config=${project.basedir}/target/assembly/etc/org.eclipse.virgo.kernel.authentication.config</argument>
+                        <argument>-Dorg.eclipse.virgo.kernel.authentication.file=${project.basedir}/target/assembly/etc/org.eclipse.virgo.kernel.users.properties</argument>
+                        <argument>-Dorg.eclipse.virgo.kernel.home=${project.basedir}/target/assembly</argument>
+                        <!--<argument>-Dosgi.java.profile=file:${project.basedir}/target/assembly/etc/java6-server.profile</argument>-->
+                        <argument>-Dssh.server.keystore=${project.basedir}/target/assembly/etc/hostkey.ser</argument>
+                        <argument>-Dorg.eclipse.virgo.kernel.config=${project.basedir}/target/assembly/etc</argument>
+                        <argument>-Declipse.ignoreApp=true</argument>
+                        <argument>-Dosgi.install.area=${project.basedir}/target/assembly</argument>
+                        <argument>-Dosgi.configuration.area=${project.basedir}/target/assembly/etc</argument>
+                        <argument>-Dosgi.sharedConfiguration.area=${project.basedir}/target/assembly/etc</argument>
+                        
+                        <!-- Debug configuration -->
+                        <argument>-Xdebug</argument>
+                        <argument>-Djava.compiler=NONE</argument>
+                        <argument>-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005</argument>
+
+                        <argument>org.apache.karaf.main.Main</argument>
+                    </arguments>
+                </configuration>
+            </plugin>                              
+        </plugins>
+    </build>
+</project>

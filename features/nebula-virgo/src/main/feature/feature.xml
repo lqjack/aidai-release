@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one or more
+  ~ contributor license agreements.  See the NOTICE file distributed with
+  ~ this work for additional information regarding copyright ownership.
+  ~ The ASF licenses this file to You under the Apache License, Version 2.0
+  ~ (the "License"); you may not use this file except in compliance with
+  ~ the License.  You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<features name='nebula-virgo-${project.version}' xmlns='http://karaf.apache.org/xmlns/features/v1.2.0'>
+    <feature name="nebula.region" description="Provide Region Support" version="${project.version}">
+        <bundle start-level="30">mvn:org.eclipse.equinox/org.eclipse.equinox.region/${equinox.region.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.karaf.region/org.apache.karaf.region.persist/${karaf.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.karaf.region/org.apache.karaf.region.command/${karaf.version}</bundle>
+    </feature>
+    <!-- Spring 3.2.x support -->
+
+    <feature name="nebula.spring" description="Spring 3.2.x support" version="${spring32.version}" resolver="(obr)">
+        <bundle dependency="true" start-level="30">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aopalliance/${aopalliance.bundle.version}</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-core/${spring32.version}</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-expression/${spring32.version}</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-beans/${spring32.version}</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-aop/${spring32.version}</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-context/${spring32.version}</bundle>
+        <bundle start-level="30">mvn:org.springframework/spring-context-support/${spring32.version}</bundle>
+        <bundle start-level="30">mvn:org.apache.karaf.deployer/org.apache.karaf.deployer.spring/${project.version}</bundle>
+    </feature>
+
+    <feature name="nebula.gemini.blueprint" version="${gemini.blueprint.version}" description="Gemini Blueprint Extender" resolver="(obr)">
+        <feature version="[3,4)">nebula.spring</feature>
+        <bundle start-level="30">mvn:org.eclipse.gemini.blueprint/gemini-blueprint-io/${gemini.blueprint.version}</bundle>
+        <bundle start-level="30">mvn:org.eclipse.gemini.blueprint/gemini-blueprint-core/${gemini.blueprint.version}</bundle>
+        <bundle start-level="30">mvn:org.eclipse.gemini.blueprint/gemini-blueprint-extender/${gemini.blueprint.version}</bundle>
+    </feature>
+    
+    <feature name='virgo.runtime.libs' description='Nebula Virgo Runtime Libs' version='${project.version}' resolver='(obr)'>
+        <details>Nebula Virgo runtime thirdparty libs needed from Eclipse Virgo project</details>
+        <feature version="${project.version}">nebula.region</feature>
+        <bundle start-level='30'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${aspectj.bundles.version}</bundle>        
+        <bundle start-level='30'>mvn:org.apache.felix/org.apache.felix.configadmin/${felix.configadmin.version}</bundle>
+        
+        <!-- Note: slf4j api is already exported by pax-logging-api at initial startup in karaf -->
+        <bundle dependency='true' start-level='30'>mvn:org.slf4j/slf4j-api/${slf4j.version}</bundle>
+        <bundle dependency='true' start-level='30'>mvn:org.slf4j/jul-to-slf4j/${slf4j.version}</bundle>
+        <bundle dependency='true' start-level='32'>mvn:ch.qos.logback/logback-core/${qos.logback.version}</bundle>
+        <bundle dependency='true' start-level='32'>mvn:ch.qos.logback/logback-classic/${qos.logback.version}</bundle>
+
+        <!--<bundle start-level='30'>mvn:org.eclipse.equinox/org.eclipse.equinox.region/${equinox.region.version}</bundle>-->
+        <bundle start-level='30'>mvn:org.eclipse.equinox/org.eclipse.equinox.common/${equinox.common.version}</bundle>
+        <bundle start-level='30'>mvn:org.eclipse.equinox/org.eclipse.equinox.event/${equinox.event.version}</bundle>
+
+        <bundle start-level='30'>mvn:org.eclipse.equinox/org.eclipse.equinox.frameworkadmin/${equinox.frameworkadmin.version}</bundle>
+        <bundle start-level='30'>mvn:org.eclipse.equinox/org.eclipse.equinox.frameworkadmin.equinox/${equinox.frameworkadmin.equinox.version}</bundle>
+        <bundle start-level='30'>mvn:org.eclipse.equinox/org.eclipse.equinox.simpleconfigurator/${equinox.simpleconfigurator.version}</bundle>
+        <bundle start-level='30'>mvn:org.eclipse.equinox/org.eclipse.equinox.simpleconfigurator.manipulator/${equinox.simpleconfigurator.manipulator.version}</bundle>                                
+        
+        <bundle start-level='30'>mvn:org.eclipse.gemini.management/org.eclipse.gemini.management/${gemini.management.version}</bundle>                
+    </feature> 
+    
+    <feature name='virgo.util' description='Nebula Virgo Util' version='${project.version}' resolver='(obr)'>
+        <details>Nebula Virgo Util from Eclipse Virgo project</details>                     
+        <bundle dependency='true' start-level='30'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aspectj/${aspectj.bundles.version}</bundle>                                
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.util.common/${project.version}</bundle>
+        <!--<bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.util.env/${project.version}</bundle>-->
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.util.math/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.util.io/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.util.jmx/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.util.osgi/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.util.parser.manifest/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.util.parser.launcher/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.util.osgi.manifest/${project.version}</bundle>
+    </feature> 
+    
+    <feature name='virgo.medic' description='Nebula Virgo Medic' version='${project.version}' resolver='(obr)'>
+        <details>Nebula Virgo Medic from Eclipse Virgo project</details>                 
+        
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.medic/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.medic.core/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.medic.logbackclassicfragment/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.medic.logbackcorefragment/${project.version}</bundle>
+    </feature> 
+    
+    <feature name='virgo.nano.spi' description='Nebula Virgo Nano SPI' version='${project.version}' resolver='(obr)'>
+        <details>Nebula Virgo Nano Spi from Eclipse Virgo project</details>
+        <feature version="${project.version}">virgo.runtime.libs</feature>      
+        <feature version="${project.version}">virgo.util</feature> 
+        <feature version="${project.version}">virgo.medic</feature> 
+        <feature version="${karaf.version}">scr</feature>              
+        
+        <bundle dependency='true' start-level='30'>mvn:org.osgi/org.osgi.enterprise/${osgi.version}</bundle>        
+       
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.nano.core/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.nano.deployer.api/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.nano.deployer.hot/${project.version}</bundle>        
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.nano.management/${project.version}</bundle>        
+    </feature>
+    
+    <feature name='virgo.nano' description='Nebula Virgo Nano' version='${project.version}' resolver='(obr)'>
+        <details>Nebula Virgo Nano from Eclipse Virgo project</details>
+        <feature version="${project.version}">virgo.runtime.libs</feature>      
+        <feature version="${project.version}">virgo.util</feature> 
+        <feature version="${project.version}">virgo.medic</feature>
+        <feature version="${project.version}">virgo.nano.spi</feature>               
+        
+        <bundle start-level='30'>mvn:commons-fileupload/commons-fileupload/${commons-fileupload.version}</bundle>          
+        <bundle start-level='30'>mvn:commons-io/commons-io/${commons-io.version}</bundle>
+        <bundle start-level='30'>mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${geronimo.servlet-spec.version}</bundle>
+        <bundle start-level='30'>mvn:org.apache.felix/org.apache.felix.http.jetty/${felix.http.version}</bundle>
+        
+        <bundle start-level='30'>mvn:org.jolokia/jolokia-osgi/${jolokia.version}</bundle>
+        
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.nano.deployer/${project.version}</bundle>        
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.nano.management.controller/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.nano.services.concurrent/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.nano.services.ds/${project.version}</bundle>
+    </feature> 
+    
+    <feature name='virgo.repository' description='Nebula Virgo Artifact Repository' version='${project.version}' resolver='(obr)'>
+        <details>Nebula Virgo Artifact Repository from Eclipse Virgo project</details>         
+        <feature version="${project.version}">virgo.nano.spi</feature>                    
+        <bundle dependency='true' start-level='30'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-codec/${commons-codec.bundles.version}</bundle>
+        <bundle dependency='true' start-level='30'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.commons-httpclient/${commons-httpclient.bundles.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.repository/${project.version}</bundle>        
+    </feature> 
+    
+    <feature name='virgo.kernel.spi' description='Nebula Virgo Kernel SPI' version='${project.version}' resolver='(obr)'>
+        <details>Nebula Virgo Kernel SPI from Eclipse Virgo project</details>
+
+        <feature version="${project.version}">virgo.nano.spi</feature>
+        <feature version="${gemini.blueprint.version}">gemini-blueprint</feature>
+        <feature version="${project.version}">virgo.repository</feature>                
+                        
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.kernel.agent.dm/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.kernel.artifact/${project.version}</bundle>
+        
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.kernel.equinox.extensions/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.kernel.kerneldmfragment/${project.version}</bundle>                
+                
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.kernel.osgi/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.kernel.deployer/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.kernel.services/${project.version}</bundle>                
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.kernel.model/${project.version}</bundle>
+        <!--<bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.kernel.userregion/${project.version}</bundle>-->
+        <!--<bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.shell.command/${project.version}</bundle>-->
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.kernel.userregionfactory/${project.version}</bundle>
+        <bundle start-level='32'>mvn:ossu.nebula.virgo/org.eclipse.virgo.management.fragment/${project.version}</bundle>                
+    </feature> 
+    
+    <feature name='virgo.kernel' description='Nebula Virgo Kernel' version='${project.version}' resolver='(obr)'>
+        <details>Nebula Virgo Kernel from Eclipse Virgo project</details>
+        <!-- AOP is a dependency in spring feature -->
+        <!--<bundle start-level='30'>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.aopalliance/${aopalliance.bundle.version}</bundle>-->
+        <bundle start-level='30'>mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/${geronimo.servlet-spec.version}</bundle>
+        <bundle start-level='30'>mvn:org.apache.felix/org.apache.felix.http.jetty/${felix.http.version}</bundle>
+        
+        <feature version="${project.version}">virgo.kernel.spi</feature>                   
+    </feature>
+
+    <feature name='virgo.web' description='Nebula Virgo Web' version='${project.version}' resolver='(obr)'>
+        <details>Nebula Virgo Web from Eclipse Virgo project</details>
+
+        <feature version="${project.version}">virgo.kernel.spi</feature>                   
+    </feature>
+</features>

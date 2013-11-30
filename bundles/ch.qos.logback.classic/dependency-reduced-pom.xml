@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>bundles</artifactId>
+    <groupId>ossu.nebula.bundles</groupId>
+    <version>2.0.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ossu.nebula.bundles</groupId>
+  <artifactId>ch.qos.logback.classic</artifactId>
+  <packaging>bundle</packaging>
+  <name>Nebula Bundles :: Logback Classic</name>
+  <version>1.0.13</version>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <executions>
+          <execution>
+            <id>bundle-manifest</id>
+            <phase>package</phase>
+            <goals>
+              <goal>manifest</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <instructions>
+            <Bundle-SymbolicName>ch.qos.logback.classic</Bundle-SymbolicName>
+            <Export-Package>ch.qos.lgoback.classic*;version="1.0.13",org.slf4j*;version="1.7.5"</Export-Package>
+            <Import-Package>*</Import-Package>
+          </instructions>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <filters>
+                <filter>
+                  <artifact>ch.qos.logback:logback-classic</artifact>
+                  <excludes>
+                    <exclude>**</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <properties>
+    <pkgVersion>1.0.13</pkgVersion>
+    <pkgArtifactId>logback-classic</pkgArtifactId>
+    <pkgGroupId>ch.qos.logback</pkgGroupId>
+  </properties>
+</project>
+
