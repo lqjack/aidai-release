@@ -29,6 +29,7 @@
         <bundle start="true" start-level="5">mvn:org.ops4j.pax.url/pax-url-maven-commons/${pax.url.version}</bundle>
         <bundle start="true" start-level="5">mvn:org.ops4j.pax.url/pax-url-aether/${pax.url.version}</bundle>
         <bundle start="true" start-level="5">mvn:org.ops4j.pax.url/pax-url-wrap/${pax.url.version}</bundle>
+        <bundle start="true" start-level="7">mvn:ossu.nebula.runtime/nebula-hooks/${project.version}</bundle>
         <bundle start="true" start-level="8">mvn:org.ops4j.pax.logging/pax-logging-api/${pax.logging.version}</bundle>
         <bundle start="true" start-level="8">mvn:org.ops4j.pax.logging/pax-logging-service/${pax.logging.version}</bundle>
         <bundle start="true" start-level="10">mvn:org.apache.karaf.service/org.apache.karaf.service.guard/${karaf.version}</bundle>
