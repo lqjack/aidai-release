@@ -48,7 +48,7 @@
         <bundle start-level='30'>mvn:org.apache.felix/org.apache.felix.configadmin/${felix.configadmin.version}</bundle>
         
         <!-- Note: slf4j api is already exported by pax-logging-api at initial startup in karaf -->
-        <bundle dependency='true' start-level='30'>mvn:org.slf4j/slf4j-api/${slf4j.version}</bundle>
+        <!--<bundle dependency='true' start-level='30'>mvn:org.slf4j/slf4j-api/${slf4j.version}</bundle>-->
         <bundle dependency='true' start-level='30'>mvn:org.slf4j/jul-to-slf4j/${slf4j.version}</bundle>
         <bundle dependency='true' start-level='32'>mvn:ch.qos.logback/logback-core/${qos.logback.version}</bundle>
         <bundle dependency='true' start-level='32'>mvn:ch.qos.logback/logback-classic/${qos.logback.version}</bundle>

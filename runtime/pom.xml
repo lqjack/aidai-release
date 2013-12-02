@@ -29,6 +29,6 @@
     <name>Nebula Runtime</name>
 
     <modules>
-        <module>kernel</module>
+        <module>nebula-hooks</module>
     </modules>   
 </project>
