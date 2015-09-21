@@ -117,6 +117,5 @@
 		<module>com.aidai.web</module> -->
 		<!-- <module>com.aidai.test</module> -->
 		<!-- <module>com.aidai.client</module> -->
-		<module>com.aidai.features</module>
 	</modules>
 </project>
