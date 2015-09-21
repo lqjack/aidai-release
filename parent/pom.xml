@@ -185,6 +185,9 @@
         <bnd.version.policy>[$(version;==;$(@)),$(version;+;$(@)))</bnd.version.policy>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
+        
+        
+        
     </properties>
     
     <dependencyManagement>
@@ -2125,7 +2128,7 @@
                            require at least J2SE-1.4 due to org.eclipse.equinox.security dependency
                            many bundles require J2SE-1.5 now.
                         -->
-                        <executionEnvironment>J2SE-1.5</executionEnvironment>
+                        <executionEnvironment>J2SE-1.7</executionEnvironment><!-- TODO J2SE-1.5 -->
                     </configuration>
                 </plugin>
                 <plugin>

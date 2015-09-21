@@ -9,17 +9,33 @@
 	<url>http://maven.apache.org</url>
 
 	<parent>
-		<groupId>com.aidai</groupId>
-		<artifactId>com.aidai.modules</artifactId>
+		<groupId>ossu.nebula</groupId>
+		<artifactId>modules</artifactId>
 		<version>1.0.0</version>
 	</parent>
 
-	<properties>
+	<!-- <properties>
 		<aidai.osgi.export.pkg>
 			com.aidai.provider
 		</aidai.osgi.export.pkg>
-		<aidai.osgi.private.pkg />
-	</properties>
+	</properties> -->
+	
+	<build>
+		<plugins>
+			<plugin>
+	            <groupId>org.apache.felix</groupId>
+	            <artifactId>maven-bundle-plugin</artifactId>
+	            <extensions>true</extensions>
+	            <configuration>
+	                <instructions>
+	                    <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+	                    <Export-Package>com.aidai.provider</Export-Package>
+	                    <!-- <_versionpolicy>${bnd.version.policy}</_versionpolicy> -->
+	                </instructions>
+	            </configuration>
+	        </plugin>
+		</plugins>
+	</build>
 
 	<dependencies>
 		<dependency>

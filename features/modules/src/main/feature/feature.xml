@@ -3,8 +3,8 @@
 <features name='Nebula-modules-${project.version}' xmlns='http://karaf.apache.org/xmlns/features/v1.2.0'>
 
     <feature name="modules" description="Provide Region Support" version="${project.version}">
-        <bundle start-level="30">mvn:com.aidai/com.aidai.provider/1.0.0</bundle>
-        <bundle start-level="30">mvn:com.aidai/com.aidai.consumer/1.0.0</bundle>
+        <bundle start-level="30">mvn:ossu.nebula/com.aidai.provider/1.0.0</bundle>
+        <bundle start-level="30">mvn:ossu.nebula/com.aidai.consumer/1.0.0</bundle>
     </feature>
 
 </features>

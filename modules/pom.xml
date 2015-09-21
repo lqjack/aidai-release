@@ -8,9 +8,30 @@
 		<version>2.0.0-SNAPSHOT</version>
 		<relativePath>../parent</relativePath>
 	</parent>
-
-	<artifactId>com.aidai.modules</artifactId>
+	
+	<groupId>ossu.nebula</groupId>
+	<artifactId>modules</artifactId>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
+	
+	<modules>
+		<module>com.aidai.provider</module>
+		<module>com.aidai.consumer</module>		
+		<!-- <module>com.aidai.utils</module>
+		<module>com.aidai.model</module>
+		<module>com.aidai.model.impl</module>
+		<module>com.aidai.mysql.datasource</module>
+		<module>com.aidai.dao</module>
+		<module>com.aidai.dao.impl</module>
+		<module>com.aidai.facade.service.api</module>
+		<module>com.aidai.facade.service.impl</module>
+		<module>com.aidai.service</module>
+		<module>com.aidai.service.impl</module>
+		<module>com.aidai.controller</module>
+		<module>com.aidai.web</module> -->
+		<!-- <module>com.aidai.test</module> -->
+		<!-- <module>com.aidai.client</module> -->
+	</modules>
 
 	<build>
 		<plugins>
@@ -29,11 +50,11 @@
 						<Import-Package>${aidai.osgi.import}</Import-Package>
 						<DynamicImport-Package>${aidai.osgi.dynamic}</DynamicImport-Package>
 						<Private-Package>${aidai.osgi.private.pkg}</Private-Package>
-						<Implementation-Title>Apache aidai</Implementation-Title>
+						<Implementation-Title>aidai</Implementation-Title>
 						<Implementation-Version>${project.version}</Implementation-Version>
 						<Bundle-Vendor>The Apache Software Foundation</Bundle-Vendor>
 						<Include-Resource>${aidai.osgi.include.resource}</Include-Resource>
-						<_removeheaders>${aidai.osgi.remove.headers}}</_removeheaders>
+						<!-- <_removeheaders>${aidai.osgi.remove.headers}}</_removeheaders> -->
 						<_failok>${aidai.osgi.failok}</_failok>
 						<_consumer-policy>${aidai.osgi.import.default.version}</_consumer-policy>
 						<_provider-policy>$&lt;range;[==,=+)&gt;</_provider-policy>
@@ -54,15 +75,15 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
 					<archive>
-						<manifestFile>
+						<!-- <manifestFile>
 							src/main/resources/META-INF/MANIFEST.MF
-						</manifestFile>
+						</manifestFile> -->
 						<manifestEntries>
 							<Implementation-Vendor>爱贷网</Implementation-Vendor>
 							<Specification-Vendor>爱贷网</Specification-Vendor>
-							<url>${project.url}</url>
+							<!-- <url>${project.url}</url>
 							<Built-Version>${project.version}</Built-Version>
-							<Built-Time>${maven.build.timestamp}</Built-Time>
+							<Built-Time>${maven.build.timestamp}</Built-Time> -->
 						</manifestEntries>
 					</archive>
 				</configuration>
@@ -100,22 +121,4 @@
 		</dependency> -->
 	</dependencies>
 
-	<modules>
-		<module>com.aidai.provider</module>
-		<module>com.aidai.consumer</module>		
-		<!-- <module>com.aidai.utils</module>
-		<module>com.aidai.model</module>
-		<module>com.aidai.model.impl</module>
-		<module>com.aidai.mysql.datasource</module>
-		<module>com.aidai.dao</module>
-		<module>com.aidai.dao.impl</module>
-		<module>com.aidai.facade.service.api</module>
-		<module>com.aidai.facade.service.impl</module>
-		<module>com.aidai.service</module>
-		<module>com.aidai.service.impl</module>
-		<module>com.aidai.controller</module>
-		<module>com.aidai.web</module> -->
-		<!-- <module>com.aidai.test</module> -->
-		<!-- <module>com.aidai.client</module> -->
-	</modules>
 </project>
