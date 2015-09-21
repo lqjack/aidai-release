@@ -103,7 +103,7 @@
         <aries.transaction.jdbc.version>1.0.0</aries.transaction.jdbc.version>
         <aries.util.version>1.1.0</aries.util.version>
 
-        <gemini.blueprint.version>1.0.0.RELEASE</gemini.blueprint.version>
+        <gemini.blueprint.version>1.0.2.RELEASE</gemini.blueprint.version>
         <jansi.version>1.11</jansi.version>
         <jline.version>2.11</jline.version>
         <jledit.version>0.2.1</jledit.version>
@@ -161,8 +161,8 @@
         <equinox.frameworkadmin.equinox.version>1.0.500</equinox.frameworkadmin.equinox.version>
         <equinox.simpleconfigurator.manipulator.version>2.0.0</equinox.simpleconfigurator.manipulator.version>
         <equinox.simpleconfigurator.version>1.0.400</equinox.simpleconfigurator.version>
-        <gemini.management.version>1.0.5.RELEASE</gemini.management.version>
-        <gemini.web.version>2.2.2.RELEASE</gemini.web.version>
+        <gemini.management.version>1.0.4.RELEASE</gemini.management.version><!-- TODO 1.0.5.RELEASE -->
+        <gemini.web.version>2.2.7.RELEASE</gemini.web.version><!-- TODO 2.2.2.RELEASE -->
         <geronimo.jbi-spec.version>2.2.0</geronimo.jbi-spec.version>
         <geronimo.activation-spec.version>1.1</geronimo.activation-spec.version>
         <geronimo.javamail-spec.version>1.7.1</geronimo.javamail-spec.version>
@@ -193,7 +193,7 @@
         <!-- Furter used maven plugin versions; e.g. in the docs -->
         <plugin.depends.version>1.2</plugin.depends.version>
         <!-- Karaf Version -->
-        <karaf.version>3.0.0-SNAPSHOT</karaf.version>
+        <karaf.version>3.0.0</karaf.version><!--TODO 3.0.0-SNAPSHOT -->
         <karaf.osgi.version>3.0.0-SNAPSHOT</karaf.osgi.version>
         <!-- General Settings -->        
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -2223,6 +2223,12 @@
     </build>
     
     <repositories>
+    
+    	<repository>
+    		<id>gemini</id>
+    		<name>gemini</name>
+    		<url>http://download.eclipse.org/gemini/mvn/</url>
+    	</repository>
         <!-- Apache snapshots -->
         <repository>
             <id>apache-snapshots</id>
@@ -2237,7 +2243,7 @@
             </snapshots>
         </repository>
         
-        <!-- ServiceMix repo 
+        <!-- ServiceMix repo -->
         <repository>
             <id>servicemix</id>
             <name>Apache ServiceMix Repository</name>
@@ -2249,8 +2255,8 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-        -->
-        <!--
+        
+        <!---->
         <repository>
             <id>sonatype</id>
             <name>sonatype</name>
@@ -2263,8 +2269,8 @@
                 <updatePolicy>never</updatePolicy>
             </snapshots>
         </repository>
-        -->
-        <!-- Fusesource repo 
+        
+        <!-- Fusesource repo -->
         <repository>
             <id>fusesource.snapshots</id>
             <name>FuseSource snapshot repository</name>
@@ -2273,11 +2279,11 @@
                 <enabled>false</enabled>
             </releases>
             <snapshots>
-                <enabled>true</enabled
+                <enabled>true</enabled>
                 <updatePolicy>never</updatePolicy>
             </snapshots>
         </repository>
-        -->
+        
         <!-- OPS4J SNAPSHOT repository  -->
         <repository>
             <id>ops4j.sonatype.snapshots.deploy</id>
@@ -2292,7 +2298,7 @@
             </snapshots>
         </repository>
 
-        <!-- Gemini Blueprint repository 
+        <!-- Gemini Blueprint repository -->
         <repository>
             <id>zodiac-repository</id>
             <name>Zodiac Release Repository</name>
@@ -2304,8 +2310,8 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-        -->
-        <!-- OSSRH snapshots 
+        
+        <!-- OSSRH snapshots -->
         <repository>
             <id>ossrh.sonatype.snapshots.deploy</id>
             <name>OSSRH snapshot repository</name>
@@ -2318,8 +2324,8 @@
                 <updatePolicy>never</updatePolicy>
             </snapshots>
         </repository>  
-        -->
-        <!-- Sonatype Forge 
+        
+        <!-- Sonatype Forge -->
         <repository>
             <id>sonatype-forge</id>
             <url>http://repository.sonatype.org/content/groups/forge/</url>
@@ -2331,8 +2337,8 @@
                 <updatePolicy>never</updatePolicy>
             </snapshots>
         </repository> 
-        -->
-        <!--  Spring EBR  
+        
+        <!--  Spring EBR  -->
         <repository>           
             <id>spring-ebr</id>
             <name>Spring EBR</name>
@@ -2344,6 +2350,6 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>   
-        -->
+        
     </repositories>
 </project>
