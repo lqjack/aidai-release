@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>com.aidai.modules</artifactId>
+		<groupId>com.aidai</groupId>
+		<version>1.0.0</version>
+	</parent>
+	
+	<artifactId>com.aidai.facade.service.impl</artifactId>
+	<packaging>bundle</packaging>
+
+	<name>对外服务实现类</name>
+	
+	<properties>
+		<aidai.osgi.export.pkg>
+			com.aidai.facade.service.api
+		</aidai.osgi.export.pkg>
+		<aidai.osgi.import>
+			com.aidai.dao;provide:=true,*
+		</aidai.osgi.import>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>org.springframework.transaction</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>com.springsource.org.aspectj.runtime</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>com.springsource.org.aspectj.weaver</artifactId>
+		</dependency>
+
+		<!-- project dependenies -->
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.model</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.model.impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.utils</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.dao</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.facade.service.api</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>

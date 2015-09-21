@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>com.aidai.modules</artifactId>
+		<groupId>com.aidai</groupId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>com.aidai.client</artifactId>
+	<packaging>bundle</packaging>
+
+	<name>服务访问客户端</name>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.3.4</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-Activator>com.aidai.client.WisdomPrinter</Bundle-Activator>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+	
+		<!-- project dependencies -->
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.model</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.utils</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.facade.service.api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.facade.service.impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.service</artifactId>
+		</dependency>
+	</dependencies>
+</project>

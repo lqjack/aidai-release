@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 这是一个重要的地方，很多人在使用<s:include>子页面后，发现子页面乱码，怎么改都不行，原因就在次，struts2的默认编码为UTF-8，乱码的同志请看看你的jsp页面上的编码是不是和这个不一致呢。只要把这里和jsp编码改一致就行了 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 告诉struts2，我要用osgi装配工厂，其实默认就是这个了-_-!!! -->
+	<constant name="struts.objectFactory" value="osgi" />
+	
+	<constant name="struts.convention.default.parent.package" value="osgi-default" />
+	
+	<constant name="struts.objectFactory.delegate" value="springOsgi" />
+	<!-- struts2的扩展名，比如struts1的时候，用的.do,struts2默认为.action，可以改成其它的，比如.dxd -->
+	<!-- <constant name="struts.action.extension" value="do" /> -->
+	<!-- 当struts配置文件修改时是否自动加载 -->
+	<constant name="struts.configuration.xmlreload" value="true" />
+	<!-- 资源文件 -->
+	<constant name="struts.custom.i18n.resources" value="messageResource">
+	</constant>
+	<!-- 配置Convention插件自动重加载映射 -->
+	<constant name="struts.convention.classes.reload" value="true" />
+	<!-- <constant name="struts.convention.result.path" value="/WEB-INF" /> 
+		<constant name="struts.convention.result.flatLayout" value="false" /> -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- 开发模式 -->
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.freemarker.manager.classname"
+		value="com.hl.qlc.base.freemarker.CustomFreemarkerManager" />
+	<constant name="struts.multipart.maxSize" value="1000000000" />
+	<constant name="struts.mapper.alwaysSelectFullNamespace"
+		value="true" />
+		
+</struts>
+

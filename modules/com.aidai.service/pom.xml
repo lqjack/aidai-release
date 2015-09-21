@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>com.aidai.modules</artifactId>
+		<groupId>com.aidai</groupId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>com.aidai.service</artifactId>
+	<packaging>bundle</packaging>
+
+	<name>內部使用服务及其实现</name>
+
+	<properties>
+		<aidai.osgi.export.pkg>
+			com.aidai.service
+		</aidai.osgi.export.pkg>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>com.springsource.slf4j.api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>com.springsource.slf4j.nop</artifactId>
+		</dependency>
+		
+		
+		<!-- project dependencies -->
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.model</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.utils</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.dao</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>

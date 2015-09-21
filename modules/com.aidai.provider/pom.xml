@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>com.aidai.provider</artifactId>
+	<packaging>bundle</packaging>
+
+	<name>com.aidai.provider</name>
+	<url>http://maven.apache.org</url>
+
+	<parent>
+		<groupId>com.aidai</groupId>
+		<artifactId>com.aidai.modules</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<properties>
+		<aidai.osgi.export.pkg>
+			com.aidai.provider
+		</aidai.osgi.export.pkg>
+		<aidai.osgi.private.pkg />
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+</project>

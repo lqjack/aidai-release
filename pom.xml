@@ -12,6 +12,7 @@
         <module>bundles</module>
         <module>runtime</module>
         <module>virgo</module>
+        <module>modules</module>
         <module>features</module>
         <module>assemblies</module>
         <module>launcher</module>

@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>com.aidai.modules</artifactId>
+		<groupId>com.aidai</groupId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>com.aidai.dao.impl</artifactId>
+	<packaging>bundle</packaging>
+
+	<name>DAO实现</name>
+
+	<properties>
+		<aidai.osgi.export.pkg>
+			!com.aidai.dao.impl.*
+		</aidai.osgi.export.pkg>
+		<aidai.osgi.import>
+			com.aidai.dao;provide:=true,*
+		</aidai.osgi.import>
+		<aidai.osgi.private.pkg>
+			com.aidai.dao.impl.*
+		</aidai.osgi.private.pkg>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.ibatis</groupId>
+			<artifactId>com.springsource.com.ibatis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>org.springframework.orm</artifactId>
+		</dependency>
+		
+		<!-- project dependecies -->
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.model</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.model.impl</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.utils</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.dao</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.mysql.datasource</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>

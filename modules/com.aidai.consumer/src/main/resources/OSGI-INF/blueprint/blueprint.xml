@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.0.0"
+	xmlns:jpa="http://aries.apache.org/xmlns/jpa/v1.0.0"
+	default-activation="lazy">
+	
+	<bean id="consumer" class="com.aidai.consumer.Consumer" init-method="init">
+		<reference id="provider" interface="com.aidai.provider.IProvider"/>
+	</bean>
+	
+	<service ref="consumer" interface="com.aidai.consumer.IConsumer"/>
+
+</blueprint>

@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>com.aidai.modules</artifactId>
+		<groupId>com.aidai</groupId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>com.aidai.facade.service.api</artifactId>
+	<packaging>bundle</packaging>
+	<name>对外服务API</name>
+	
+	<properties>
+        <aidai.osgi.export.pkg>
+            com.aidai.facade.service.api
+        </aidai.osgi.export.pkg>
+    </properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.model</artifactId>
+			<version>1.0.0</version>
+			<type>bundle</type>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.utils</artifactId>
+			<version>1.0.0</version>
+			<type>bundle</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.aidai</groupId>
+			<artifactId>com.aidai.dao</artifactId>
+			<version>1.0.0</version>
+			<type>bundle</type>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+	
+</project>
+
+

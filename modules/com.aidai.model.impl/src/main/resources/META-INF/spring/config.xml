@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+	<!-- <bean id="user" class="frame.model.impl.UserBean" init-method="startUp">
+	</bean>
+	<service ref="user" interface="frame.model.User" /> -->
+</blueprint>

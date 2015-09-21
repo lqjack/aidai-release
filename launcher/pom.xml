@@ -85,6 +85,15 @@
             <type>kar</type>
             <version>${project.version}</version>
         </dependency>
+        
+        <dependency>
+        	<groupId>ossu.nebula.features</groupId>
+            <artifactId>modules</artifactId>
+            <classifier>features</classifier>
+            <type>xml</type>
+            <version>${project.version}</version>
+            <scope>runtime</scope>
+        </dependency>
                 
     </dependencies>
     

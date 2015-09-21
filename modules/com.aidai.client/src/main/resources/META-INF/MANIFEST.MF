@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: com.aidai.client
+Export-Package: com.aidai.client;uses:="com.aidai.facade.service.api,o
+ rg.osgi.framework"
+Bundle-Version: 1.0.0
+Bundle-Name: com.aidai.client
+Import-Package: com.aidai.facade.service.api,com.aidai.facade.service.
+ impl,org.osgi.framework
+Tool: Bundlor 1.1.2.RELEASE
+

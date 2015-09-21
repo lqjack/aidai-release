@@ -1,0 +1,122 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>parent</artifactId>
+		<groupId>ossu.nebula</groupId>
+		<version>2.0.0-SNAPSHOT</version>
+		<relativePath>../parent</relativePath>
+	</parent>
+
+	<artifactId>com.aidai.modules</artifactId>
+	<packaging>pom</packaging>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<inherited>true</inherited>
+				<configuration>
+					<excludeDependencies>${aidai.osgi.exclude.dependencies}</excludeDependencies>
+					<instructions>
+						<Bundle-Name>${project.name}</Bundle-Name>
+						<Bundle-SymbolicName>${aidai.osgi.symbolic.name}</Bundle-SymbolicName>
+						<Bundle-Activator>${aidai.osgi.activator}</Bundle-Activator>
+						<Export-Package>${aidai.osgi.export}</Export-Package>
+						<Import-Package>${aidai.osgi.import}</Import-Package>
+						<DynamicImport-Package>${aidai.osgi.dynamic}</DynamicImport-Package>
+						<Private-Package>${aidai.osgi.private.pkg}</Private-Package>
+						<Implementation-Title>Apache aidai</Implementation-Title>
+						<Implementation-Version>${project.version}</Implementation-Version>
+						<Bundle-Vendor>The Apache Software Foundation</Bundle-Vendor>
+						<Include-Resource>${aidai.osgi.include.resource}</Include-Resource>
+						<_removeheaders>${aidai.osgi.remove.headers}}</_removeheaders>
+						<_failok>${aidai.osgi.failok}</_failok>
+						<_consumer-policy>${aidai.osgi.import.default.version}</_consumer-policy>
+						<_provider-policy>$&lt;range;[==,=+)&gt;</_provider-policy>
+						<Export-Service>${aidai.osgi.export.service}</Export-Service>
+						<Import-Service>${aidai.osgi.import.service}</Import-Service>
+					</instructions>
+					
+					<supportedProjectTypes>
+						<supportedProjectType>jar</supportedProjectType>
+						<supportedProjectType>bundle</supportedProjectType>
+						<supportedProjectType>war</supportedProjectType>
+					</supportedProjectTypes>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestFile>
+							src/main/resources/META-INF/MANIFEST.MF
+						</manifestFile>
+						<manifestEntries>
+							<Implementation-Vendor>爱贷网</Implementation-Vendor>
+							<Specification-Vendor>爱贷网</Specification-Vendor>
+							<url>${project.url}</url>
+							<Built-Version>${project.version}</Built-Version>
+							<Built-Time>${maven.build.timestamp}</Built-Time>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<dependencies>
+		<!-- <dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>com.springsource.slf4j.api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>com.springsource.slf4j.nop</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.mchange.c3p0</groupId>
+			<artifactId>com.springsource.com.mchange.v2.c3p0</artifactId>
+		</dependency> -->
+	</dependencies>
+
+	<modules>
+		<module>com.aidai.provider</module>
+		<module>com.aidai.consumer</module>		
+		<!-- <module>com.aidai.utils</module>
+		<module>com.aidai.model</module>
+		<module>com.aidai.model.impl</module>
+		<module>com.aidai.mysql.datasource</module>
+		<module>com.aidai.dao</module>
+		<module>com.aidai.dao.impl</module>
+		<module>com.aidai.facade.service.api</module>
+		<module>com.aidai.facade.service.impl</module>
+		<module>com.aidai.service</module>
+		<module>com.aidai.service.impl</module>
+		<module>com.aidai.controller</module>
+		<module>com.aidai.web</module> -->
+		<!-- <module>com.aidai.test</module> -->
+		<!-- <module>com.aidai.client</module> -->
+		<module>com.aidai.features</module>
+	</modules>
+</project>
